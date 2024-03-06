@@ -1,5 +1,5 @@
 # Define a base stage that uses the official python runtime base image
-FROM public.ecr.aws/sam/build-python3.11:1.111.0-20240306181712 AS base
+FROM python:3.11-slim AS base
 
 # Add curl for healthcheck
 RUN apt-get update && \
