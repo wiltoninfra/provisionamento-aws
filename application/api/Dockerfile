@@ -1,5 +1,5 @@
 # Define a base stage that uses the official python runtime base image
-FROM python:3.11-slim AS base
+FROM public.ecr.aws/sam/build-python3.11:1.111.0-20240306181712 AS base
 
 # Add curl for healthcheck
 RUN apt-get update && \
@@ -29,3 +29,4 @@ COPY . .
 EXPOSE 80
 # Define our command to be run when launching the container
 CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "--log-file", "-", "--access-logfile", "-", "--workers", "4", "--keep-alive", "0"]
+
